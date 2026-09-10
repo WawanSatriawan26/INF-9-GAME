@@ -1622,6 +1622,7 @@ function cekSambung(btn,benar){
   }
 }
 function renderSkorBermain(){
+  rekap.bermain.skor = skorBermain; rekap.bermain.mainSelesai = true; // FIX: catat hasil nyata ke rekap
   document.getElementById('bermain-sub').textContent='Selesai';
   document.getElementById('bermain-next').disabled=true; play('bintang');
   document.getElementById('bermain-content').innerHTML=`
@@ -1736,6 +1737,7 @@ function latJodohLatih(el){
   } else { evLatih(false); }
 }
 function renderSkorLatih(){
+  rekap.berlatih.skor = latih.skor; rekap.berlatih.latihSelesai = true; // FIX: catat hasil nyata ke rekap
   document.getElementById('berlatih-sub').textContent='Selesai';
   document.getElementById('berlatih-next').disabled=true;
   const total=dtLatih.length, persen=Math.round(latih.skor/total*100);
