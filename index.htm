@@ -1474,7 +1474,11 @@ function belajarPrev(){ if(belajar.step > 0){ belajar.step--; renderBelajar(); }
    ============================================================ */
 let skorBermain=0, main={step:0}, activeGame=null;
 function tambahSkor(val){ skorBermain=Math.max(0,skorBermain+val); document.getElementById('skor-bermain-angka').textContent=skorBermain; }
-function startBermain(){ main.step=0; skorBermain=0; tambahSkor(0); showScreen('scr-bermain'); renderBermain(); }
+function startBermain(){
+  main.step=0; skorBermain=0; tambahSkor(0);
+  showScreen('scr-bermain'); renderBermain();
+  document.querySelector('#scr-bermain .nav-back').disabled = true; // NEW: kunci tombol Sebelumnya saat masuk Bermain
+}
 function bermainNext(){ if(main.step<dataBermain.length-1){ main.step++; renderBermain(); } else { clearKumpul(); renderSkorBermain(); } }
 function bermainPrev(){
   clearKumpul();
@@ -1636,7 +1640,12 @@ function renderSkorBermain(){
    ============================================================ */
 let latih={ step:0, skor:0, state:[] };
 function startBerlatih(){ latih={step:0,skor:0,state:[]}; dtLatih.forEach((_,i)=>latih.state[i]={done:false,attempted:false}); showScreen('scr-berlatih'); renderBerlatih(); }
-function berlatihNext(){ if(latih.step<dtLatih.length){ latih.step++; renderBerlatih(); } }
+function startBerlatih(){
+  latih={step:0,skor:0,state:[]};
+  dtLatih.forEach((_,i)=>latih.state[i]={done:false,attempted:false});
+  showScreen('scr-berlatih'); renderBerlatih();
+  document.querySelector('#scr-berlatih .nav-back').disabled = true; // NEW: kunci tombol Sebelumnya saat masuk Berlatih
+}
 function berlatihPrev(){
   document.querySelector('#scr-berlatih .nav-back').textContent="◀ Sebelumnya";
   document.getElementById('berlatih-next').textContent="Selanjutnya ▶";
