@@ -1640,8 +1640,13 @@ function renderSkorBermain(){
    BERLATIH — 10 soal (pg / bs / drag_word / pg_kompleks / jodoh)
    ============================================================ */
 let latih={ step:0, skor:0, state:[] };
-function startBerlatih(){ latih={step:0,skor:0,state:[]}; dtLatih.forEach((_,i)=>latih.state[i]={done:false,attempted:false}); showScreen('scr-berlatih'); renderBerlatih(); }
 function startBerlatih(){
+  latih={step:0,skor:0,state:[]};
+  dtLatih.forEach((_,i)=>latih.state[i]={done:false,attempted:false});
+  showScreen('scr-berlatih'); renderBerlatih();
+  document.querySelector('#scr-berlatih .nav-back').disabled = true; // NEW: kunci tombol Sebelumnya saat masuk Berlatih
+}
+function berlatihNext(){ if(latih.step<dtLatih.length){ latih.step++; renderBerlatih(); } }
   latih={step:0,skor:0,state:[]};
   dtLatih.forEach((_,i)=>latih.state[i]={done:false,attempted:false});
   showScreen('scr-berlatih'); renderBerlatih();
